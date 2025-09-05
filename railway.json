@@ -1,0 +1,30 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "nixpacks",
+    "buildCommand": "composer install --no-dev --optimize-autoloader && npm ci && npm run build"
+  },
+  "deploy": {
+    "startCommand": "php artisan optimize:for-production && php-fpm -D && caddy run --config Caddyfile --adapter caddyfile",
+    "healthcheckPath": "/health",
+    "healthcheckTimeout": 300,
+    "restartPolicyType": "on_failure",
+    "restartPolicyMaxRetries": 3
+  },
+  "environments": {
+    "production": {
+      "variables": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
+        "CACHE_DRIVER": "redis",
+        "SESSION_DRIVER": "redis",
+        "QUEUE_CONNECTION": "database",
+        "LOG_CHANNEL": "stack",
+        "LOG_LEVEL": "error"
+      }
+    }
+  },
+  "experimental": {
+    "configAsCode": true
+  }
+}

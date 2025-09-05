@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Tests\Feature\CategoriesApiTest" file="/Users/bayumbp132017/Dev/Vibe Coding/modern-blog/tests/Feature/CategoriesApiTest.php" tests="2" assertions="19" errors="0" failures="0" skipped="0" time="0.869679">
+    <testcase name="public_can_get_category_with_published_posts" file="/Users/bayumbp132017/Dev/Vibe Coding/modern-blog/tests/Feature/CategoriesApiTest.php" line="206" class="Tests\Feature\CategoriesApiTest" classname="Tests.Feature.CategoriesApiTest" assertions="11" time="0.783797"/>
+    <testcase name="public_category_posts_are_paginated" file="/Users/bayumbp132017/Dev/Vibe Coding/modern-blog/tests/Feature/CategoriesApiTest.php" line="233" class="Tests\Feature\CategoriesApiTest" classname="Tests.Feature.CategoriesApiTest" assertions="8" time="0.085882"/>
+  </testsuite>
+</testsuites>

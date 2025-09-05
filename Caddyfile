@@ -1,0 +1,37 @@
+:{$PORT}
+
+root * public
+encode gzip
+
+# Handle PHP files
+php_fastcgi 127.0.0.1:9000
+
+# Security headers
+header {
+    X-Content-Type-Options nosniff
+    X-Frame-Options DENY
+    X-XSS-Protection "1; mode=block"
+    Referrer-Policy strict-origin-when-cross-origin
+}
+
+# Try files in order
+try_files {path} {path}/ /index.php?{query}
+
+# Deny access to sensitive files
+@forbidden {
+    path /.env*
+    path /storage/*
+    path /bootstrap/cache/*
+    path /*.log
+}
+respond @forbidden 403
+
+# Cache static assets
+@static {
+    file
+    path *.css *.js *.ico *.png *.jpg *.jpeg *.gif *.svg *.woff *.woff2 *.ttf *.eot
+}
+header @static Cache-Control "max-age=31536000"
+
+# Handle Laravel routes
+file_server

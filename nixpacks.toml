@@ -1,0 +1,32 @@
+[phases.setup]
+nixPkgs = [
+  "php82", 
+  "php82Packages.composer", 
+  "nodejs-18_x",
+  "php82Extensions.redis",
+  "php82Extensions.pdo_mysql", 
+  "php82Extensions.mbstring",
+  "php82Extensions.openssl",
+  "php82Extensions.curl",
+  "php82Extensions.zip",
+  "caddy",
+  "php82Extensions.fpm"
+]
+
+[phases.install]
+cmds = [
+  "composer install --no-dev --optimize-autoloader",
+  "npm ci"
+]
+
+[phases.build]
+cmds = [
+  "npm run build"
+]
+
+[variables]
+PHP_VERSION = "8.2"
+NODE_VERSION = "18"
+
+[start]
+cmd = "php artisan optimize:for-production && php-fpm -D && caddy run --config Caddyfile --adapter caddyfile"
