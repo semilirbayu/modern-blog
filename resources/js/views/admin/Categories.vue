@@ -258,10 +258,10 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useCategoriesStore } from '@/stores/categories'
-import LoadingSpinner from '@/components/common/LoadingSpinner.vue'
-import ConfirmDialog from '@/components/common/ConfirmDialog.vue'
-import CategoryForm from '@/components/admin/CategoryForm.vue'
+import { useCategoriesStore } from '../../stores/categories.js'
+import LoadingSpinner from '../../components/common/LoadingSpinner.vue'
+import ConfirmDialog from '../../components/common/ConfirmDialog.vue'
+import CategoryForm from '../../components/admin/CategoryForm.vue'
 
 const router = useRouter()
 const categoriesStore = useCategoriesStore()
@@ -279,9 +279,9 @@ const sortDirection = ref('asc')
 const categories = computed(() => categoriesStore.categories)
 
 const filteredCategories = computed(() => {
-  let filtered = categories.value
+  let filtered = categories.value || []
 
-  if (searchTerm.value) {
+  if (searchTerm.value && filtered.length > 0) {
     const search = searchTerm.value.toLowerCase()
     filtered = filtered.filter(category =>
       category.name.toLowerCase().includes(search) ||

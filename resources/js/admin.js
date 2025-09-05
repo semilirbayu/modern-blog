@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router'
 import { adminRoutes } from './router/admin.js'
+import AdminApp from './components/AdminApp.vue'
 import '../css/app.css'
 
 const pinia = createPinia()
@@ -46,14 +47,6 @@ router.beforeEach(async (to, from, next) => {
     
     next()
 })
-
-const AdminApp = {
-    template: `
-        <div id="admin-app">
-            <router-view />
-        </div>
-    `
-}
 
 const app = createApp(AdminApp)
 

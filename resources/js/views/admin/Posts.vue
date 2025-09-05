@@ -96,13 +96,13 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { usePostsStore } from '@/stores/posts'
-import { useCategoriesStore } from '@/stores/categories'
-import LoadingSpinner from '@/components/common/LoadingSpinner.vue'
-import ConfirmDialog from '@/components/common/ConfirmDialog.vue'
-import PostsTable from '@/components/admin/PostsTable.vue'
-import PostFilters from '@/components/admin/PostFilters.vue'
-import Pagination from '@/components/admin/Pagination.vue'
+import { usePostsStore } from '../../stores/posts.js'
+import { useCategoriesStore } from '../../stores/categories.js'
+import LoadingSpinner from '../../components/common/LoadingSpinner.vue'
+import ConfirmDialog from '../../components/common/ConfirmDialog.vue'
+import PostsTable from '../../components/admin/PostsTable.vue'
+import PostFilters from '../../components/admin/PostFilters.vue'
+import Pagination from '../../components/admin/Pagination.vue'
 
 const router = useRouter()
 const route = useRoute()

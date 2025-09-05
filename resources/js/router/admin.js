@@ -36,14 +36,13 @@ export const adminRoutes = [
             {
                 path: 'posts',
                 name: 'admin.posts',
-                component: () => import('../views/admin/Posts.vue'),
+                component: () => import('../views/admin/PostsSimple.vue'),
                 meta: {
                     title: 'Posts',
                     description: 'Manage blog posts',
                     breadcrumb: 'Posts',
                     icon: 'document-text',
-                    requiresAuth: true,
-                    permissions: ['manage-posts']
+                    requiresAuth: true
                 }
             },
             {
@@ -78,14 +77,13 @@ export const adminRoutes = [
             {
                 path: 'categories',
                 name: 'admin.categories',
-                component: () => import('../views/admin/Categories.vue'),
+                component: () => import('../views/admin/CategoriesSimple.vue'),
                 meta: {
                     title: 'Categories',
                     description: 'Manage post categories',
                     breadcrumb: 'Categories',
                     icon: 'tag',
-                    requiresAuth: true,
-                    permissions: ['manage-categories']
+                    requiresAuth: true
                 }
             },
             {
